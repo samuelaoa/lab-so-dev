@@ -10,7 +10,10 @@
 
 Resposta:
 
-# ─────────────────────────────────────────────────────
+o shell usa números inteiros chamados file descriptors
+
+por padrao, todo processo nasce com tres canais abertos:
+
 
 # ATIVIDADE 7 — Make
 
@@ -20,10 +23,17 @@ Resposta:
 #    que não mudou?
 
 Resposta 1:
+o make herdou essa logica, mas a elevou a um nível de inteligencia baseado em dependências e estados
+o papel do despachante no make é cumprido pela árvore de dependências
 
+o jobs historico muitas vezes precisava de intervenção manual ou scripts complexos para pular etapas, o make usa a verificação de timestamps do sistema de arquivos
+para cada regra no seu makefile, o make faz uma comparação binaria
 
 # 2. O monitor unificava "supervisor, carregador e rotinas de I/O
 #    sob uma interface textual". O que o Makefile unifica no fluxo
 #    de desenvolvimento moderno?
 
 Resposta 2:
+o makefile atua como uma interface única para uma cadeia de ferramentas que, hoje, é muito mais fragmentada e complexa do que nos tempos do mainframe.
+O Makefile encapsula tudo sob comandos simples como make build ou make lint. Você não precisa saber as flags complexas do compilador; o Makefile as unifica em uma interface textual padronizada.
+O monitor histórico lidava com endereços físicos de memória e canais. O Makefile lida com a abstração de caminhos de sistema e variáveis de ambiente.
