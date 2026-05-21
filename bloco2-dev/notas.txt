@@ -5,8 +5,8 @@
 # FASE 1 — Pré-processador (gcc -E)
 # Quantas linhas tem soma.i? O que o pré-processador expandiu?
 
-Linhas em soma.i:
-Observação:
+Linhas em soma.i: 757
+observação: ele expandiu a diretiva exclude assim aumentando muitoo o numero de linhas 
 
 
 # FASE 2 — Assembly (gcc -S)
@@ -14,26 +14,42 @@ Observação:
 # interessantes.
 
 Trecho de soma.s:
+.LC0:
+        .string "%d\n"
+        .text
+        .align  1
+        .globl  main
+        .type   main, @function
 
 # FASE 3 — Código objeto (gcc -c)
 # Cole a saída de: file soma.o
 
 file soma.o:
+soma.o: ELF 64-bit LSB relocatable, UCB RISC-V, version 1 (SYSV), not stripped
 
 # Cole a saída de: nm soma.o
 
 nm soma.o:
-
-# Quais símbolos aparecem? O que significa o marcador "U" ao lado
+.LC0:
+        .string "%d\n"
+        .text
+        .align  1
+        .globl  main
+        .type   main, @function
+file
+# Quais símbolos aparecem? O que significa o marcador "U" ao lado 
 # de printf?
 
 Observação sobre nm:
+r,T,U,T.
+U significa undefined ou indefinido.
 
 
 # FASE 4 — Ligação (gcc soma.o -o soma)
 # O que mudou após a ligação? Execute ./soma e registre a saída.
 
 Saída de ./soma:
+12
 
 
 # QUESTÕES DE SÍNTESE
@@ -43,9 +59,11 @@ Saída de ./soma:
 # ligador em relação a esse símbolo? 
 
 Resposta 1:
-
+o ligador resolve os simbolos indefinidos buscando na biblioteca padrão do c e produz o
+executavel soma
 
 # 2. Você gerou três arquivos intermediários: soma.i (pré-processado), soma.s (assembly),
 #    soma.o (objeto). Qual desses é o que o computador realmente executa?
 
 Resposta 2:
+Ele executa o ./soma produzida pelo soma.o
