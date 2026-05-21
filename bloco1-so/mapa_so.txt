@@ -34,3 +34,4 @@
 # Em qual diretório do Linux você reconhece essa função?
 
 Resposta:
+Estão localizados no diretório de em sua maioria.
